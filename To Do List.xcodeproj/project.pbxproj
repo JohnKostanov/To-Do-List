@@ -8,20 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		521F234322FDF8D600D2DFAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F234222FDF8D600D2DFAF /* AppDelegate.swift */; };
-		521F234522FDF8D600D2DFAF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F234422FDF8D600D2DFAF /* ViewController.swift */; };
 		521F234822FDF8D600D2DFAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 521F234622FDF8D600D2DFAF /* Main.storyboard */; };
 		521F234A22FDF8D800D2DFAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 521F234922FDF8D800D2DFAF /* Assets.xcassets */; };
 		521F234D22FDF8D800D2DFAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 521F234B22FDF8D800D2DFAF /* LaunchScreen.storyboard */; };
+		521F235622FDF97D00D2DFAF /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F235522FDF97D00D2DFAF /* ToDo.swift */; };
+		52FA3BE222FE297F00E93BB8 /* ToDoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FA3BE122FE297F00E93BB8 /* ToDoTableViewController.swift */; };
+		52FA3BE422FE29A500E93BB8 /* ToDoItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FA3BE322FE29A500E93BB8 /* ToDoItemTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		521F233F22FDF8D600D2DFAF /* To Do List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "To Do List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		521F234222FDF8D600D2DFAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		521F234422FDF8D600D2DFAF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		521F234722FDF8D600D2DFAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		521F234922FDF8D800D2DFAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		521F234C22FDF8D800D2DFAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		521F234E22FDF8D800D2DFAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		521F235522FDF97D00D2DFAF /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
+		52FA3BE122FE297F00E93BB8 /* ToDoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewController.swift; sourceTree = "<group>"; };
+		52FA3BE322FE29A500E93BB8 /* ToDoItemTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +58,48 @@
 		521F234122FDF8D600D2DFAF /* To Do List */ = {
 			isa = PBXGroup;
 			children = (
-				521F234222FDF8D600D2DFAF /* AppDelegate.swift */,
-				521F234422FDF8D600D2DFAF /* ViewController.swift */,
-				521F234622FDF8D600D2DFAF /* Main.storyboard */,
-				521F234922FDF8D800D2DFAF /* Assets.xcassets */,
-				521F234B22FDF8D800D2DFAF /* LaunchScreen.storyboard */,
-				521F234E22FDF8D800D2DFAF /* Info.plist */,
+				521F235722FE26C400D2DFAF /* App */,
+				521F235422FDF94D00D2DFAF /* Models */,
+				521F235822FE26F500D2DFAF /* Storyboard */,
+				521F235922FE270E00D2DFAF /* View Controllers */,
 			);
 			path = "To Do List";
+			sourceTree = "<group>";
+		};
+		521F235422FDF94D00D2DFAF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				521F235522FDF97D00D2DFAF /* ToDo.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		521F235722FE26C400D2DFAF /* App */ = {
+			isa = PBXGroup;
+			children = (
+				521F234222FDF8D600D2DFAF /* AppDelegate.swift */,
+				521F234922FDF8D800D2DFAF /* Assets.xcassets */,
+				521F234E22FDF8D800D2DFAF /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		521F235822FE26F500D2DFAF /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				521F234622FDF8D600D2DFAF /* Main.storyboard */,
+				521F234B22FDF8D800D2DFAF /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		521F235922FE270E00D2DFAF /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				52FA3BE122FE297F00E93BB8 /* ToDoTableViewController.swift */,
+				52FA3BE322FE29A500E93BB8 /* ToDoItemTableViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,7 +173,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				521F234522FDF8D600D2DFAF /* ViewController.swift in Sources */,
+				52FA3BE422FE29A500E93BB8 /* ToDoItemTableViewController.swift in Sources */,
+				521F235622FDF97D00D2DFAF /* ToDo.swift in Sources */,
+				52FA3BE222FE297F00E93BB8 /* ToDoTableViewController.swift in Sources */,
 				521F234322FDF8D600D2DFAF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,7 +324,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5K285D3RL3;
-				INFOPLIST_FILE = "To Do List/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/To Do List/App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,7 +342,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5K285D3RL3;
-				INFOPLIST_FILE = "To Do List/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/To Do List/App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
