@@ -38,7 +38,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="stackView" destination="iDI-v0-kYe" id="9to-hp-jqh"/>
-                                    <segue destination="mFK-Xk-YsE" kind="show" id="ToO-AI-BXK"/>
+                                    <segue destination="mFK-Xk-YsE" kind="show" identifier="ToDoItemSegue" id="ToO-AI-BXK"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -62,7 +62,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="qgt-2x-fk1">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToDoItemCell" id="qgt-2x-fk1">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qgt-2x-fk1" id="S0z-i8-1yB">
@@ -76,9 +76,21 @@
                             <outlet property="delegate" destination="mFK-Xk-YsE" id="bhN-dv-LZe"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="To Do Item Details" id="LcH-zl-HnT"/>
+                    <navigationItem key="navigationItem" title="To Do Item Details" id="LcH-zl-HnT">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="2fI-qG-pho">
+                            <connections>
+                                <segue destination="sjD-oo-rBF" kind="unwind" unwindAction="unwind:" id="rnw-Dx-ph5"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="OzZ-yt-pUJ">
+                            <connections>
+                                <segue destination="sjD-oo-rBF" kind="unwind" identifier="SaveSegue" unwindAction="unwind:" id="eSo-l8-ra0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="INZ-Ev-ELB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="sjD-oo-rBF" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="935" y="167"/>
         </scene>

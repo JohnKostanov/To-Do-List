@@ -70,7 +70,30 @@ class ToDoTableViewController: UITableViewController {
                 
             }
         }
-        
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "ToDoItemSegue" else { return }
+        guard let selectedIndex = tableView.indexPathForSelectedRow else { return }
+        let destination = segue.destination as! ToDoItemTableViewController
+        destination.todo = todos[selectedIndex.row].copy() as! ToDo
+    }
+    
+    @IBAction func unwind(_ segue: UIStoryboardSegue) {
+        guard segue.identifier == "SaveSegue" else { return }
+        guard let selectedIndex = tableView.indexPathForSelectedRow else { return }
+        let sourse = segue.source as! ToDoItemTableViewController
+        todos[selectedIndex.row] = sourse.todo
+        if let toDoCell = tableView.cellForRow(at: selectedIndex) as? ToDoCell {
+            if let stackView = toDoCell.stackView {
+                stackView.arrangedSubviews.forEach { subview in
+                    stackView.removeArrangedSubview(subview)
+                    subview.removeFromSuperview()
+                }
+            }
+        }
+        tableView.reloadRows(at: [selectedIndex], with: .automatic)
     }
 }
 

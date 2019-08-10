@@ -11,5 +11,10 @@ import UIKit
 class ToDoItemTableViewController: UITableViewController {
     // MARK: - Properties
     var todo = ToDo()
+    
+    //MARK: - UITableViewController Methods
+    override func viewDidLoad() {
+        todo.isComplete.toggle()
+    }
 
 }

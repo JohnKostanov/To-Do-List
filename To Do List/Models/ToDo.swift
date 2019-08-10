@@ -35,6 +35,11 @@ class ToDo {
         return Mirror(reflecting: self).children.map { $0.value }
     }
     
+    func copy() -> Any {
+        let newToDo = ToDo(title: title, isComplete: isComplete, dueDate: dueDate, notes: notes, image: image?.copy() as? UIImage)
+        return newToDo
+    }
+    
     
 }
 
