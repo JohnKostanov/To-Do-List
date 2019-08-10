@@ -9,5 +9,7 @@
 import UIKit
 
 class ToDoItemTableViewController: UITableViewController {
+    // MARK: - Properties
+    var todo = ToDo()
 
 }

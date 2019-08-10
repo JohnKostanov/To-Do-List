@@ -23,6 +23,10 @@ class ToDo {
         self.image = image
     }
     
+    var capitilizedKeys: [String] {
+        return keys.map { $0.capitalizedSpaces }
+    }
+    
     var keys: [String] {
         return Mirror(reflecting: self).children.compactMap { $0.label }
     }

@@ -39,7 +39,7 @@ class ToDoTableViewController: UITableViewController {
         guard stackView.arrangedSubviews.count == 0 else { return }
         
         for index in 0 ..< todo.keys.count {
-            let key = todo.keys[index]
+            let key = todo.capitilizedKeys[index]
             let value = todo.values[index]
             
             if let stringValue = value as? String {
@@ -51,7 +51,7 @@ class ToDoTableViewController: UITableViewController {
             } else if let dateValue = value as? Date {
                 
                 let label = UILabel()
-                label.text = "\(key): \(dateValue)"
+                label.text = "\(key): \(dateValue.formatedDate )"
                 stackView.addArrangedSubview(label)
                 
             } else if let boolValue = value as? Bool {
@@ -64,6 +64,8 @@ class ToDoTableViewController: UITableViewController {
                 
                 let imageView = UIImageView(image: imageValue)
                 imageView.contentMode = .scaleAspectFit
+                let heightConstraint = NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 200)
+                imageView.addConstraint(heightConstraint)
                 stackView.addArrangedSubview(imageView)
                 
             }
