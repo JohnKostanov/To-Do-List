@@ -23,5 +23,14 @@ class ToDo {
         self.image = image
     }
     
+    var keys: [String] {
+        return Mirror(reflecting: self).children.compactMap { $0.label }
+    }
+    
+    var values: [Any?] {
+        return Mirror(reflecting: self).children.map { $0.value }
+    }
+    
+    
 }
 

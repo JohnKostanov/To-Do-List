@@ -18,34 +18,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToDoCell" textLabel="sOz-8n-K4Q" detailTextLabel="Ygu-yz-L6d" imageView="37x-Xv-k5w" style="IBUITableViewCellStyleSubtitle" id="gKB-Js-sjg">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToDoCell" id="gKB-Js-sjg" customClass="ToDoCell" customModule="To_Do_List" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gKB-Js-sjg" id="Bax-SW-t7Q">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sOz-8n-K4Q">
-                                            <rect key="frame" x="90" y="5" width="33.5" height="20.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ygu-yz-L6d">
-                                            <rect key="frame" x="90" y="25.5" width="33" height="14.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="bread" id="37x-Xv-k5w">
-                                            <rect key="frame" x="20" y="0.0" width="55" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </imageView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="iDI-v0-kYe">
+                                            <rect key="frame" x="20" y="11" width="374" height="22"/>
+                                        </stackView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="iDI-v0-kYe" secondAttribute="trailing" id="B8z-Rh-QPz"/>
+                                        <constraint firstItem="iDI-v0-kYe" firstAttribute="leading" secondItem="Bax-SW-t7Q" secondAttribute="leadingMargin" id="ZGv-mY-sbD"/>
+                                        <constraint firstItem="iDI-v0-kYe" firstAttribute="top" secondItem="Bax-SW-t7Q" secondAttribute="topMargin" id="bKb-Yg-6Gq"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="iDI-v0-kYe" secondAttribute="bottom" id="gPy-kv-K1r"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="stackView" destination="iDI-v0-kYe" id="9to-hp-jqh"/>
                                     <segue destination="mFK-Xk-YsE" kind="show" id="ToO-AI-BXK"/>
                                 </connections>
                             </tableViewCell>
@@ -107,7 +99,4 @@
             <point key="canvasLocation" x="-574" y="168"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="bread" width="3006" height="2365"/>
-    </resources>
 </document>
