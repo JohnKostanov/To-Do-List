@@ -8,6 +8,6 @@
 
 import UIKit
 
-class SectionImagePickerControllerViewController: UIImagePickerController {
+class SectionImagePickerController: UIImagePickerController {
     var section: Int!
 }

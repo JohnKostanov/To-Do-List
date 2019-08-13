@@ -15,7 +15,7 @@ class ToDoItemTableViewController: UITableViewController {
 //MARK: - UITableViewDataSource
 extension ToDoItemTableViewController/*: UITableViewDataSource*/ {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let value = todo.values[indexPath.section]
+//        let value = todo.values[indexPath.section]
         if let cell = tableView.cellForRow(at: indexPath) {
             return cell.isHidden ? 0 : UITableView.automaticDimension
         } else {
@@ -41,6 +41,45 @@ extension ToDoItemTableViewController/*: UITableViewDataSource*/ {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let key = todo.capitilizedKeys[section]
         return key
+    }
+}
+// MARK: - UITableViewDelegate
+extension ToDoItemTableViewController/*: UITableViewDelegate*/ {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let value = todo.values[indexPath.section]
+        
+        if value is Date {
+            
+            // TODO: Implement show/hide date picker
+            
+        } else if value is UIImage {
+            
+            let alert = UIAlertController(title: "Chose Source", message: nil, preferredStyle: .actionSheet)
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+            alert.addAction(cancel)
+            
+            let imagePicker = SectionImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.section = indexPath.section
+            
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                let cameraAction = UIAlertAction(title: "Camera", style: .default) { action in
+                    imagePicker.sourceType = .camera
+                    self.present(imagePicker, animated: true)
+                }
+                alert.addAction(cameraAction)
+            }
+            
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+                let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default) { action in
+                    imagePicker.sourceType = .photoLibrary
+                    self.present(imagePicker, animated: true)
+                }
+                alert.addAction(photoLibraryAction)
+            }
+            
+            present(alert, animated: true)
+        }
     }
 }
 
@@ -121,3 +160,17 @@ extension ToDoItemTableViewController {
         todo.setValue(text, forKey: key)
     }
 }
+
+extension ToDoItemTableViewController: UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        dismiss(animated: true)
+        guard let image = info[.originalImage] as? UIImage else { return }
+        guard let sectionPicker = picker as? SectionImagePickerController else { return }
+        guard let section = sectionPicker.section else { return }
+        let key = todo.keys[section]
+        todo.setValue(image, forKey: key)
+        let indexPath = IndexPath(row: 0, section: section)
+        tableView.reloadRows(at: [indexPath], with: .automatic)
+    }
+}
+extension ToDoItemTableViewController: UINavigationControllerDelegate {}
