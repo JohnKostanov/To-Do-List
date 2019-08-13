@@ -11,15 +11,18 @@ import UIKit
 class ToDoItemTableViewController: UITableViewController {
     // MARK: - Properties
     var todo = ToDo()
-    
-    //MARK: - UITableViewController Methods
-    override func viewDidLoad() {
-        todo.isComplete.toggle()
-    }
-
 }
 //MARK: - UITableViewDataSource
 extension ToDoItemTableViewController/*: UITableViewDataSource*/ {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let value = todo.values[indexPath.section]
+        if let cell = tableView.cellForRow(at: indexPath) {
+            return cell.isHidden ? 0 : UITableView.automaticDimension
+        } else {
+            return /*value is Date && indexPath.row == 1 ? 0 : */ UITableView.automaticDimension
+        }
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return todo.keys.count
     }
@@ -43,20 +46,12 @@ extension ToDoItemTableViewController/*: UITableViewDataSource*/ {
 
 // MARK: - Cell Configurator
 extension ToDoItemTableViewController {
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let value = todo.values[indexPath.section]
-        if let cell = tableView.cellForRow(at: indexPath) {
-            return cell.isHidden ? 0 : UITableView.automaticDimension
-        } else {
-            return value is Date && indexPath.row == 1 ? 0 : UITableView.automaticDimension
-        }
-    }
-    
     func getCellFor(indexPath: IndexPath, with value: Any?) -> UITableViewCell {
         
         if let stringValue = value as? String {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldCell") as! TextFieldCell
+            cell.textField.addTarget(self, action: #selector(textFieldValueChanged(_:)), for: .editingChanged)
             cell.textField.section = indexPath.section
             cell.textField.text = stringValue
             return cell
@@ -70,6 +65,7 @@ extension ToDoItemTableViewController {
                 return cell
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "DatePickerCell") as! DatePickerCell
+                cell.datePicker.addTarget(self, action: #selector(dateValueChanged(_:)), for: .valueChanged)
                 cell.datePicker.date = dateValue
                 cell.datePicker.section = indexPath.section
                 cell.datePicker.minimumDate = Date()
@@ -87,6 +83,7 @@ extension ToDoItemTableViewController {
         } else if let boolValue = value as? Bool {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchCell") as! SwitchCell
+            cell.switchButton.addTarget(self, action: #selector(switchValueChanged(_:)), for: .valueChanged)
             cell.switchButton.isOn = boolValue
             cell.switchButton.section = indexPath.section
             return cell
@@ -94,9 +91,33 @@ extension ToDoItemTableViewController {
         } else {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldCell") as! TextFieldCell
+            cell.textField.addTarget(self, action: #selector(textFieldValueChanged(_:)), for: .editingChanged)
             cell.textField.text = ""
             cell.textField.section = indexPath.section
             return cell
         }
+    }
+}
+// MARK: - Actions
+extension ToDoItemTableViewController {
+    @objc func dateValueChanged(_ sender: SectionDatePicker) {
+        let section = sender.section!
+        let key = todo.keys[section]
+        let date = sender.date
+        todo.setValue(date, forKey: key)
+        let labelIndexPath = IndexPath(row: 0, section: section)
+        tableView.reloadRows(at: [labelIndexPath], with: .automatic)
+    }
+    
+    @objc func switchValueChanged(_ sender: SectionSwitch) {
+        let key = todo.keys[sender.section!]
+        let value = sender.isOn
+        todo.setValue(value, forKey: key)
+    }
+    
+    @objc func textFieldValueChanged(_ sender: SectionTextField) {
+        let key = todo.keys[sender.section!]
+        let text = sender.text ?? ""
+        todo.setValue(text, forKey: key)
     }
 }
