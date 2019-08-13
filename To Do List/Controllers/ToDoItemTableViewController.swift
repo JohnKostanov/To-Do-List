@@ -43,11 +43,21 @@ extension ToDoItemTableViewController/*: UITableViewDataSource*/ {
 
 // MARK: - Cell Configurator
 extension ToDoItemTableViewController {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let value = todo.values[indexPath.section]
+        if let cell = tableView.cellForRow(at: indexPath) {
+            return cell.isHidden ? 0 : UITableView.automaticDimension
+        } else {
+            return value is Date && indexPath.row == 1 ? 0 : UITableView.automaticDimension
+        }
+    }
+    
     func getCellFor(indexPath: IndexPath, with value: Any?) -> UITableViewCell {
         
         if let stringValue = value as? String {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldCell") as! TextFieldCell
+            cell.textField.section = indexPath.section
             cell.textField.text = stringValue
             return cell
             
@@ -61,6 +71,7 @@ extension ToDoItemTableViewController {
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "DatePickerCell") as! DatePickerCell
                 cell.datePicker.date = dateValue
+                cell.datePicker.section = indexPath.section
                 cell.datePicker.minimumDate = Date()
                 return cell
             default:
@@ -77,12 +88,14 @@ extension ToDoItemTableViewController {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchCell") as! SwitchCell
             cell.switchButton.isOn = boolValue
+            cell.switchButton.section = indexPath.section
             return cell
             
         } else {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldCell") as! TextFieldCell
             cell.textField.text = ""
+            cell.textField.section = indexPath.section
             return cell
         }
     }

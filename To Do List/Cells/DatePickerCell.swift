@@ -9,5 +9,5 @@
 import UIKit
 
 class DatePickerCell: UITableViewCell {
-    @IBOutlet var datePicker: UIDatePicker!
+    @IBOutlet var datePicker: SectionDatePicker!
 }

@@ -20,6 +20,10 @@
 		52AA594323030C7F00A8750C /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AA594223030C7F00A8750C /* DateCell.swift */; };
 		52AA594523030CAC00A8750C /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AA594423030CAC00A8750C /* DatePickerCell.swift */; };
 		52AA594723030CDD00A8750C /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AA594623030CDD00A8750C /* ImageCell.swift */; };
+		52AA594A23031E2400A8750C /* SectionDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AA594923031E2400A8750C /* SectionDatePicker.swift */; };
+		52AA594C23031EC300A8750C /* SectionImagePickerControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AA594B23031EC300A8750C /* SectionImagePickerControllerViewController.swift */; };
+		52AA594E23031F0C00A8750C /* SectionSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AA594D23031F0C00A8750C /* SectionSwitch.swift */; };
+		52AA595023031F5A00A8750C /* SectionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AA594F23031F5A00A8750C /* SectionTextField.swift */; };
 		52FA3BE222FE297F00E93BB8 /* ToDoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FA3BE122FE297F00E93BB8 /* ToDoTableViewController.swift */; };
 		52FA3BE422FE29A500E93BB8 /* ToDoItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FA3BE322FE29A500E93BB8 /* ToDoItemTableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -40,6 +44,10 @@
 		52AA594223030C7F00A8750C /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
 		52AA594423030CAC00A8750C /* DatePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerCell.swift; sourceTree = "<group>"; };
 		52AA594623030CDD00A8750C /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		52AA594923031E2400A8750C /* SectionDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionDatePicker.swift; sourceTree = "<group>"; };
+		52AA594B23031EC300A8750C /* SectionImagePickerControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionImagePickerControllerViewController.swift; sourceTree = "<group>"; };
+		52AA594D23031F0C00A8750C /* SectionSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionSwitch.swift; sourceTree = "<group>"; };
+		52AA594F23031F5A00A8750C /* SectionTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTextField.swift; sourceTree = "<group>"; };
 		52FA3BE122FE297F00E93BB8 /* ToDoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewController.swift; sourceTree = "<group>"; };
 		52FA3BE322FE29A500E93BB8 /* ToDoItemTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -78,8 +86,8 @@
 				5241F40722FEED19003F0E0C /* Cells */,
 				5241F40A22FF50E4003F0E0C /* Extensions */,
 				521F235422FDF94D00D2DFAF /* Models */,
-				521F235822FE26F500D2DFAF /* Storyboard */,
-				521F235922FE270E00D2DFAF /* View Controllers */,
+				521F235922FE270E00D2DFAF /* Controllers */,
+				52AA594823031D8400A8750C /* Views */,
 			);
 			path = "To Do List";
 			sourceTree = "<group>";
@@ -111,13 +119,13 @@
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
-		521F235922FE270E00D2DFAF /* View Controllers */ = {
+		521F235922FE270E00D2DFAF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				52FA3BE122FE297F00E93BB8 /* ToDoTableViewController.swift */,
 				52FA3BE322FE29A500E93BB8 /* ToDoItemTableViewController.swift */,
 			);
-			path = "View Controllers";
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		5241F40722FEED19003F0E0C /* Cells */ = {
@@ -140,6 +148,18 @@
 				5241F40D22FF54E7003F0E0C /* Date+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		52AA594823031D8400A8750C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				521F235822FE26F500D2DFAF /* Storyboard */,
+				52AA594923031E2400A8750C /* SectionDatePicker.swift */,
+				52AA594B23031EC300A8750C /* SectionImagePickerControllerViewController.swift */,
+				52AA594D23031F0C00A8750C /* SectionSwitch.swift */,
+				52AA594F23031F5A00A8750C /* SectionTextField.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,12 +239,16 @@
 				52AA594523030CAC00A8750C /* DatePickerCell.swift in Sources */,
 				52AA594123030C4800A8750C /* SwitchCell.swift in Sources */,
 				52AA594723030CDD00A8750C /* ImageCell.swift in Sources */,
+				52AA594C23031EC300A8750C /* SectionImagePickerControllerViewController.swift in Sources */,
 				52FA3BE222FE297F00E93BB8 /* ToDoTableViewController.swift in Sources */,
 				521F234322FDF8D600D2DFAF /* AppDelegate.swift in Sources */,
 				5241F40E22FF54E7003F0E0C /* Date+Extension.swift in Sources */,
+				52AA594A23031E2400A8750C /* SectionDatePicker.swift in Sources */,
 				5241F40C22FF516E003F0E0C /* String+Extension.swift in Sources */,
 				5241F40922FEED55003F0E0C /* ToDoCell.swift in Sources */,
+				52AA594E23031F0C00A8750C /* SectionSwitch.swift in Sources */,
 				52AA593F2303099700A8750C /* TextFieldCell.swift in Sources */,
+				52AA595023031F5A00A8750C /* SectionTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

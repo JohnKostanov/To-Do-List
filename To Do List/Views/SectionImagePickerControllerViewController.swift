@@ -1,5 +1,5 @@
 //
-//  SwitchCell.swift
+//  SectionImagePickerControllerViewController.swift
 //  To Do List
 //
 //  Created by  Джон Костанов on 13/08/2019.
@@ -8,7 +8,6 @@
 
 import UIKit
 
-class SwitchCell: UITableViewCell {
-    @IBOutlet var switchButton: SectionSwitch!
-    
+class SectionImagePickerControllerViewController: UIImagePickerController {
+    var section: Int!
 }
