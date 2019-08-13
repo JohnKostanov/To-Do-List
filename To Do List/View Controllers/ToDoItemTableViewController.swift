@@ -45,6 +45,45 @@ extension ToDoItemTableViewController/*: UITableViewDataSource*/ {
 extension ToDoItemTableViewController {
     func getCellFor(indexPath: IndexPath, with value: Any?) -> UITableViewCell {
         
-        return UITableViewCell()
+        if let stringValue = value as? String {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldCell") as! TextFieldCell
+            cell.textField.text = stringValue
+            return cell
+            
+        } else if let dateValue = value as? Date {
+            
+            switch indexPath.row {
+            case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "DateCell") as! DateCell
+                cell.setDate(dateValue)
+                return cell
+            case 1:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "DatePickerCell") as! DatePickerCell
+                cell.datePicker.date = dateValue
+                cell.datePicker.minimumDate = Date()
+                return cell
+            default:
+                fatalError("Please are more prototype cells for Date section")
+            }
+            
+        } else if let imageValue = value as? UIImage {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ImageCell") as! ImageCell
+            cell.largeImageView.image = imageValue
+            return cell
+            
+        } else if let boolValue = value as? Bool {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchCell") as! SwitchCell
+            cell.switchButton.isOn = boolValue
+            return cell
+            
+        } else {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldCell") as! TextFieldCell
+            cell.textField.text = ""
+            return cell
+        }
     }
 }

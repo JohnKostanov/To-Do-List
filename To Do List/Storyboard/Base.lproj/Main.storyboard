@@ -62,13 +62,122 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToDoItemCell" id="qgt-2x-fk1">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TextFieldCell" id="Otb-yb-L2n" customClass="TextFieldCell" customModule="To_Do_List" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qgt-2x-fk1" id="S0z-i8-1yB">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Otb-yb-L2n" id="BEe-HF-qRf">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D9r-k8-gVX">
+                                            <rect key="frame" x="20" y="11" width="374" height="22"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="D9r-k8-gVX" secondAttribute="bottom" id="6aP-3M-58P"/>
+                                        <constraint firstItem="D9r-k8-gVX" firstAttribute="leading" secondItem="BEe-HF-qRf" secondAttribute="leadingMargin" id="Kqf-Oj-9p6"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="D9r-k8-gVX" secondAttribute="trailing" id="MED-ud-guG"/>
+                                        <constraint firstItem="D9r-k8-gVX" firstAttribute="top" secondItem="BEe-HF-qRf" secondAttribute="topMargin" id="gpB-5E-utu"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="textField" destination="D9r-k8-gVX" id="1L7-jV-bzu"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DateCell" id="wgz-gU-fBa" customClass="DateCell" customModule="To_Do_List" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="99.5" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wgz-gU-fBa" id="DT5-cL-PMN">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJ3-2K-4Yt">
+                                            <rect key="frame" x="20" y="11" width="374" height="22"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="aJ3-2K-4Yt" secondAttribute="trailing" id="368-zW-4dm"/>
+                                        <constraint firstItem="aJ3-2K-4Yt" firstAttribute="leading" secondItem="DT5-cL-PMN" secondAttribute="leadingMargin" id="aty-0b-RbI"/>
+                                        <constraint firstItem="aJ3-2K-4Yt" firstAttribute="top" secondItem="DT5-cL-PMN" secondAttribute="topMargin" id="vNy-rZ-mdq"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="aJ3-2K-4Yt" secondAttribute="bottom" id="xFY-t3-yRW"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="label" destination="aJ3-2K-4Yt" id="EEL-6h-7zX"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DatePickerCell" id="zFS-3J-ug6" customClass="DatePickerCell" customModule="To_Do_List" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="143.5" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zFS-3J-ug6" id="GJ8-Dw-rUc">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="7HX-x5-yIt">
+                                            <rect key="frame" x="20" y="11" width="374" height="22"/>
+                                            <date key="date" timeIntervalSinceReferenceDate="587402873.56118906">
+                                                <!--2019-08-13 15:27:53 +0000-->
+                                            </date>
+                                        </datePicker>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="7HX-x5-yIt" secondAttribute="trailing" id="L4g-Wi-TxZ"/>
+                                        <constraint firstItem="7HX-x5-yIt" firstAttribute="leading" secondItem="GJ8-Dw-rUc" secondAttribute="leadingMargin" id="Nvf-1M-zKh"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="7HX-x5-yIt" secondAttribute="bottom" id="WXY-Kg-j3r"/>
+                                        <constraint firstItem="7HX-x5-yIt" firstAttribute="top" secondItem="GJ8-Dw-rUc" secondAttribute="topMargin" id="hAC-ZP-jwK"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="datePicker" destination="7HX-x5-yIt" id="PcE-Jn-an6"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ImageCell" id="mDQ-c6-LCT" customClass="ImageCell" customModule="To_Do_List" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="187.5" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mDQ-c6-LCT" id="f0r-6l-eEj">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LDP-iy-5KP">
+                                            <rect key="frame" x="20" y="11" width="374" height="22"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="LDP-iy-5KP" secondAttribute="bottom" id="EiX-nI-p4A"/>
+                                        <constraint firstItem="LDP-iy-5KP" firstAttribute="leading" secondItem="f0r-6l-eEj" secondAttribute="leadingMargin" id="dOg-DW-TWI"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="LDP-iy-5KP" secondAttribute="trailing" id="pZ5-r4-VtW"/>
+                                        <constraint firstItem="LDP-iy-5KP" firstAttribute="top" secondItem="f0r-6l-eEj" secondAttribute="topMargin" id="qIO-rT-UXs"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="largeImageView" destination="LDP-iy-5KP" id="LoG-Mb-8X7"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SwitchCell" id="D3g-u9-AUN" customClass="SwitchCell" customModule="To_Do_List" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="231.5" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="D3g-u9-AUN" id="ejI-Bz-paS">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QaA-ft-4PU">
+                                            <rect key="frame" x="182.5" y="6.5" width="51" height="31"/>
+                                        </switch>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="QaA-ft-4PU" firstAttribute="centerY" secondItem="ejI-Bz-paS" secondAttribute="centerY" id="MTs-77-Ggh"/>
+                                        <constraint firstItem="QaA-ft-4PU" firstAttribute="centerX" secondItem="ejI-Bz-paS" secondAttribute="centerX" id="sst-Zf-xYq"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="switchButton" destination="QaA-ft-4PU" id="WZn-V7-qlm"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
