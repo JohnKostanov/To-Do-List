@@ -64,7 +64,7 @@ extension ToDoItemTableViewController/*: UITableViewDelegate*/ {
         
         if value is Date {
             isDatePickerShown.toggle()
-            tableView.reloadRows(at: [indexPath], with: .fade)
+            tableView.reloadData()
         } else if value is UIImage {
             
             let alert = UIAlertController(title: "Chose Source", message: nil, preferredStyle: .actionSheet)
