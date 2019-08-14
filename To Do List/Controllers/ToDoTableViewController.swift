@@ -17,7 +17,7 @@ class ToDoTableViewController: UITableViewController {
         todos = [
             ToDo(title: "Купить хлеб", image: UIImage(named: "bread")),
             ToDo(title: "Записать ребенка в школу", image: UIImage(named: "school")),
-            ToDo(title: "Купить молоко", image: UIImage(named: "milk")),
+            ToDo(title: "Купить молоко", image: UIImage(named: "milk"))
         ]
     }
     
@@ -93,7 +93,7 @@ class ToDoTableViewController: UITableViewController {
                 }
             }
         }
-        tableView.reloadRows(at: [selectedIndex], with: .automatic)
+        tableView.reloadData()
     }
 }
 

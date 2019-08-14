@@ -18,6 +18,11 @@ class ToDoItemTableViewController: UITableViewController {
             datePicker.isHidden = !isDatePickerShown
         }
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        hideKeyboardWhenTappedAround()
+    }
 }
 
 //MARK: - UITableViewDataSource
@@ -59,9 +64,8 @@ extension ToDoItemTableViewController/*: UITableViewDelegate*/ {
         
         if value is Date {
             isDatePickerShown.toggle()
-            
+            tableView.reloadRows(at: [indexPath], with: .fade)
         } else if value is UIImage {
-            isDatePickerShown = false
             
             let alert = UIAlertController(title: "Chose Source", message: nil, preferredStyle: .actionSheet)
             let cancel = UIAlertAction(title: "Cancel", style: .cancel)
@@ -88,11 +92,7 @@ extension ToDoItemTableViewController/*: UITableViewDelegate*/ {
             }
             
             present(alert, animated: true)
-        } else {
-            isDatePickerShown = false
         }
-        tableView.beginUpdates()
-        tableView.endUpdates()
     }
 }
 
@@ -162,21 +162,24 @@ extension ToDoItemTableViewController {
     }
     
     @objc func switchValueChanged(_ sender: SectionSwitch) {
-        isDatePickerShown = false
         let key = todo.keys[sender.section!]
         let value = sender.isOn
         todo.setValue(value, forKey: key)
-        tableView.beginUpdates()
-        tableView.endUpdates()
     }
     
     @objc func textFieldValueChanged(_ sender: SectionTextField) {
-        isDatePickerShown = false
         let key = todo.keys[sender.section!]
         let text = sender.text ?? ""
         todo.setValue(text, forKey: key)
-        tableView.beginUpdates()
-        tableView.endUpdates()
+    }
+    
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ToDoItemTableViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
 }
