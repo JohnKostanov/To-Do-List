@@ -11,7 +11,6 @@ extension String {
         let withSpace = reduce("") { result, character in
             character.isUppercase ? "\(result) \(character)" : "\(result)\(character)"
         }
-        
         return withSpace.capitalized
     }
 }

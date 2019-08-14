@@ -11,15 +11,23 @@ import UIKit
 class ToDoItemTableViewController: UITableViewController {
     // MARK: - Properties
     var todo = ToDo()
+    var datePicker = DatePickerCell()
+    let datePickerIndexPath = IndexPath(row: 1, section: 2)
+    var isDatePickerShown: Bool = false {
+        didSet {
+            datePicker.isHidden = !isDatePickerShown
+        }
+    }
 }
+
 //MARK: - UITableViewDataSource
 extension ToDoItemTableViewController/*: UITableViewDataSource*/ {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        let value = todo.values[indexPath.section]
-        if let cell = tableView.cellForRow(at: indexPath) {
-            return cell.isHidden ? 0 : UITableView.automaticDimension
-        } else {
-            return /*value is Date && indexPath.row == 1 ? 0 : */ UITableView.automaticDimension
+        switch indexPath {
+        case datePickerIndexPath:
+            return isDatePickerShown ? UITableView.automaticDimension : 0
+        default:
+            return UITableView.automaticDimension
         }
     }
     
@@ -43,16 +51,17 @@ extension ToDoItemTableViewController/*: UITableViewDataSource*/ {
         return key
     }
 }
+
 // MARK: - UITableViewDelegate
 extension ToDoItemTableViewController/*: UITableViewDelegate*/ {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let value = todo.values[indexPath.section]
         
         if value is Date {
-            
-            // TODO: Implement show/hide date picker
+            isDatePickerShown.toggle()
             
         } else if value is UIImage {
+            isDatePickerShown = false
             
             let alert = UIAlertController(title: "Chose Source", message: nil, preferredStyle: .actionSheet)
             let cancel = UIAlertAction(title: "Cancel", style: .cancel)
@@ -79,7 +88,11 @@ extension ToDoItemTableViewController/*: UITableViewDelegate*/ {
             }
             
             present(alert, animated: true)
+        } else {
+            isDatePickerShown = false
         }
+        tableView.beginUpdates()
+        tableView.endUpdates()
     }
 }
 
@@ -149,16 +162,23 @@ extension ToDoItemTableViewController {
     }
     
     @objc func switchValueChanged(_ sender: SectionSwitch) {
+        isDatePickerShown = false
         let key = todo.keys[sender.section!]
         let value = sender.isOn
         todo.setValue(value, forKey: key)
+        tableView.beginUpdates()
+        tableView.endUpdates()
     }
     
     @objc func textFieldValueChanged(_ sender: SectionTextField) {
+        isDatePickerShown = false
         let key = todo.keys[sender.section!]
         let text = sender.text ?? ""
         todo.setValue(text, forKey: key)
+        tableView.beginUpdates()
+        tableView.endUpdates()
     }
+    
 }
 
 extension ToDoItemTableViewController: UIImagePickerControllerDelegate {

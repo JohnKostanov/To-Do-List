@@ -10,5 +10,4 @@ import UIKit
 
 class ImageCell: UITableViewCell {
     @IBOutlet var largeImageView: UIImageView!
-    
 }

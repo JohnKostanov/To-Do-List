@@ -10,9 +10,7 @@ import UIKit
 
 class DateCell: UITableViewCell {
     @IBOutlet var label: UILabel!
-    
     func setDate(_ date: Date) {
         label.text = date.formatedDate
     }
-    
 }

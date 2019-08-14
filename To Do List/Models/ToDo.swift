@@ -40,6 +40,5 @@ import UIKit
         return newToDo
     }
     
-    
 }
 
